@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppUserProfile.Views.Menu;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,13 @@ namespace AppUserProfile
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+#if DEBUG
+#pragma warning disable CS0618 // Type or member is obsolete
+            HotReloader.Current.Start(this);
+#pragma warning restore CS0618 // Type or member is obsolete
+#endif
+
+            MainPage = new MenuPage();
         }
 
         protected override void OnStart()

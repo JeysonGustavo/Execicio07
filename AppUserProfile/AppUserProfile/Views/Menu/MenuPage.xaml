@@ -1,10 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppUserProfile.Views.Menu.MenuPage">
-    <ContentPage.Content>
-        <StackLayout>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="AppUserProfile.Views.Menu.MenuPage"
+                  xmlns:local="clr-namespace:AppUserProfile.Views.Profile;assembly=AppUserProfile">
+
+    <!--Menu-->
+    <MasterDetailPage.Master>
+
+        <ContentPage Title="Menu"
+                     BackgroundColor="#0D1F2D">
+
+            <StackLayout>
+
+                <StackLayout Padding="30"
+                             BackgroundColor="#FFC926">
+                    
+                    <Image Source="logo.png"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center" />
+                    
+                </StackLayout>
+
+                <StackLayout Spacing="50"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Margin="0, 20, 0, 0">
+
+                    <ListView ItemsSource="{Binding MenuOption}" 
+                              BackgroundColor="Transparent">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Spacing="50">
+                                        <Label Text="{Binding .}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="28" />
+                                    </StackLayout>
+                                    
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
+                </StackLayout>
+
+            </StackLayout>
             
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+        </ContentPage>
+        
+    </MasterDetailPage.Master> 
+    <!-- Fim Menu-->
+    
+    <MasterDetailPage.Detail>
+        
+        <NavigationPage>
+            <x:Arguments>
+                <local:UserProfile />
+            </x:Arguments>
+        </NavigationPage>
+
+    </MasterDetailPage.Detail>
+    
+</MasterDetailPage>
